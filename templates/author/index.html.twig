@@ -14,7 +14,10 @@
     List:
     <ul>
     {% for author in authors %}
-        <li>{{author.name}} {{author.surname}}</li>
+        <li>
+        {{author.name}} {{author.surname}}
+        <a href="{{ path('author_edit', {id: author.id}) }}">Edit</a>
+        </li>
     {% endfor %}
     </ul>
 </div>

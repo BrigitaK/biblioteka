@@ -53,11 +53,16 @@ class AuthorController extends AbstractController
     }
 
      /**
-     * @Route("/author/edit", name="author_edit", methods={"GET"})
+     * @Route("/author/edit/{id}", name="author_edit", methods={"GET"})
      */
-    public function edit(): Response
+    public function edit(int $id): Response
     {
+        $author = $this->getDoctrine()
+        ->getRepository(Author::class)
+        ->find($id);
+
         return $this->render('author/edit.html.twig', [
+            'author' => $author,
         ]);
     }
 }
