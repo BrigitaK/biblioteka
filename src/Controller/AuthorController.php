@@ -65,4 +65,40 @@ class AuthorController extends AbstractController
             'author' => $author,
         ]);
     }
+       /**
+     * @Route("/author/update/{id}", name="author_update", methods={"POST"})
+     */
+    public function update(Request $r, $id): Response
+    {
+        $author = $this->getDoctrine()
+        ->getRepository(Author::class)
+        ->find($id);
+
+        $author->
+        setName($r->request->get('author_name'))->
+        setSurname($r->request->get('author_surname'));
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($author);
+        $entityManager->flush();
+
+        //grazinu redirect
+        return $this->redirectToRoute('author_index');
+    }
+      /**
+     * @Route("/author/delete/{id}", name="author_delete", methods={"POST"})
+     */
+    public function delete($id): Response
+    {
+        $author = $this->getDoctrine()
+        ->getRepository(Author::class)
+        ->find($id);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($author);
+        $entityManager->flush();
+
+        //grazinu redirect
+        return $this->redirectToRoute('author_index');
+    }
 }

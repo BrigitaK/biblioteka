@@ -10,7 +10,7 @@
 
 <div class="example-wrapper">
     <h1>Edit Author! ✅</h1>
-    <form action="{{path('author_store')}}" method="POST">
+   <form action="{{path('author_update', {id: author.id})}}" method="POST">
         Name:<input type="text" name="author_name" value="{{author.name}}">
         Surname:<input type="text" name="author_surname" value="{{author.surname}}">
         <button type="submit">Edit Author</button>
