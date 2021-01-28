@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit new Book!{% endblock %}
+{% block title %}Edit Book!{% endblock %}
 
 {% block body %}
 <style>
@@ -9,7 +9,7 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Edit new Book! ✅</h1>
+    <h1>Edit Book! ✅</h1>
     <form action="{{path('book_update', {id: book.id})}}" method="POST">
         Title:<input type="text" name="book_title" value="{{book.title}}">
         Isbn:<input type="text" name="book_isbn"  value="{{book.isbn}}">
@@ -21,7 +21,7 @@
         {{author.name}} {{author.surname}}</option>
         {% endfor %}
         </select>
-        <button type="submit">Add new Book</button>
+        <button type="submit">Edit Book</button>
     </form>
 
 </div>
