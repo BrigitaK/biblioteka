@@ -20,6 +20,9 @@
         <form action="{{ path('author_delete', {id: author.id}) }}" method="POST">
         <button type="submit">DELETE</button>
         </form>
+            {% for book in author.books %}
+                {{book.title}}<br>
+            {% endfor %}
         </li>
     {% endfor %}
     </ul>

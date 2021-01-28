@@ -94,6 +94,10 @@ class AuthorController extends AbstractController
         ->getRepository(Author::class)
         ->find($id);
 
+        if ($author->getBooks()->count() > 0) {
+            return new Response('Šio autorius ištrinti negalima, nes turi knygų.');
+        }
+
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($author);
         $entityManager->flush();
