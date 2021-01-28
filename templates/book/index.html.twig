@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BookController!{% endblock %}
+{% block title %}Books List!{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,19 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Books in Library! ✅</h1>
 
-    This friendly message is coming from:
+    List:
     <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/dashboard/agurkai/biblioteka/src/Controller/BookController.php'|file_link(0) }}">src/Controller/BookController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/dashboard/agurkai/biblioteka/templates/book/index.html.twig'|file_link(0) }}">templates/book/index.html.twig</a></code></li>
+    {% for book in books %}
+        <li>
+        {{book.title}}
+        <a href="{{ path('book_edit', {id: book.id}) }}">Edit</a>
+        <form action="{{ path('book_delete', {id: book.id}) }}" method="POST">
+        <button type="submit">DELETE</button>
+        </form>
+        </li>
+    {% endfor %}
     </ul>
 </div>
 {% endblock %}
