@@ -15,7 +15,7 @@
     <ul>
     {% for book in books %}
         <li>
-        {{book.title}}
+        {{book.title}} {{book.author.name}} {{book.author.surname}}
         <a href="{{ path('book_edit', {id: book.id}) }}">Edit</a>
         <form action="{{ path('book_delete', {id: book.id}) }}" method="POST">
         <button type="submit">DELETE</button>
