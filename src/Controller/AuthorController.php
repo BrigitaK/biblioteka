@@ -13,7 +13,7 @@ class AuthorController extends AbstractController
     /**
      * @Route("/author", name="author_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(Request $r): Response
     {
         // $authors = $this->getDoctrine()
         // ->getRepository(Author::class)
@@ -23,6 +23,15 @@ class AuthorController extends AbstractController
         ->getRepository(Author::class);
         if('name_az' == $r->query->get('sort')) {
             $authors = $authors->findBy([],['name' => 'asc']);
+        }
+        elseif('name_za' == $r->query->get('sort')) {
+            $authors = $authors->findBy([],['name' => 'desc']);
+        }
+        elseif('surname_az' == $r->query->get('sort')) {
+            $authors = $authors->findBy([],['surname' => 'asc']);
+        }
+        elseif('surname_za' == $r->query->get('sort')) {
+            $authors = $authors->findBy([],['surname' => 'desc']);
         }
         else {
             $authors = $authors->findAll();
