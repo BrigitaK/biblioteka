@@ -6,13 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Entity\Author;
 use App\Entity\Book;
 
 class BookController extends AbstractController
 {
     /**
-     * @Route("/book", name="book_index")
+     * @Route("/book", name="book_index", methods={"GET"})
      */
     public function index(Request $r): Response
     {
@@ -38,7 +39,7 @@ class BookController extends AbstractController
         return $this->render('book/index.html.twig', [
             'books' => $books,
             'authors' => $authors,
-            'authorId' => $r->query->get('author_id') ?? 0
+            'authorId' => $r->query->get('author_id') ?? 0,
         ]);
     }
 

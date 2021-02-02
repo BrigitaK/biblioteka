@@ -33,7 +33,13 @@ class Author
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Assert\NotBlank(message="Pavarde tuscia")
+       * @Assert\NotBlank(message="Surname should not be blank.")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 64,
+     *      minMessage = "Surname must be at least {{ limit }} characters long.",
+     *      maxMessage = "Surname cannot be longer than {{ limit }} characters."
+     * )
      */
     private $surname;
 
