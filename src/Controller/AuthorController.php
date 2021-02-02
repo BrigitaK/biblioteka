@@ -101,7 +101,7 @@ class AuthorController extends AbstractController
         //ir viska irasom i duomenu baze
         $entityManager->flush();
 
-        $r->getSession()->getFlashBag()->add('success', 'autorius sekmingai prideras');
+        $r->getSession()->getFlashBag()->add('success', 'autorius sekmingai pridetas');
 
         //grazinu redirect
         return $this->redirectToRoute('author_index');
