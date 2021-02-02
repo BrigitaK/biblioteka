@@ -25,7 +25,7 @@ class BookController extends AbstractController
 
         $authors = $this->getDoctrine()
         ->getRepository(Author::class)
-        ->findAll();
+        ->findBy([],['name' => 'asc', 'surname' => 'asc']);
 
         $books = $this->getDoctrine()
         ->getRepository(Book::class);
@@ -57,7 +57,7 @@ class BookController extends AbstractController
         
         $authors = $this->getDoctrine()
         ->getRepository(Author::class)
-        ->findBy([],['surname' => 'asc']);
+        ->findBy([],['name' => 'asc', 'surname' => 'asc']);
 
         return $this->render('book/create.html.twig', [
             'authors' => $authors,
