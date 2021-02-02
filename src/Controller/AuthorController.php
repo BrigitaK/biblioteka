@@ -65,6 +65,14 @@ class AuthorController extends AbstractController
      */
     public function store(Request $r, ValidatorInterface $validator): Response
     {
+        $submittedToken = $r->request->get('token');
+
+
+        if (!$this->isCsrfTokenValid('', $submittedToken)) {
+            $r->getSession()->getFlashBag()->add('errors', 'Blogas Tokenas CSRF');
+            return $this->redirectToRoute('author_create');
+        }
+
         $author = New Author;
         
         $author->
