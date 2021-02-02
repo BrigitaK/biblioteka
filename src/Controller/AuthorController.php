@@ -23,7 +23,7 @@ class AuthorController extends AbstractController
         $authors = $this->getDoctrine()
         ->getRepository(Author::class);
         if('name_az' == $r->query->get('sort')) {
-            $authors = $authors->findBy([],['name' => 'asc']);
+            $authors = $authors->findBy([],['name' => 'asc', 'surname' => 'asc']);
         }
         elseif('name_za' == $r->query->get('sort')) {
             $authors = $authors->findBy([],['name' => 'desc']);
