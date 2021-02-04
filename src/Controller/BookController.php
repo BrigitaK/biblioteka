@@ -88,7 +88,7 @@ class BookController extends AbstractController
         $book
         ->setTitle($r->request->get('book_title'))
         ->setIsbn($r->request->get('book_isbn'))
-        ->setPages($r->request->get('book_pages'))
+        ->setPages((int)$r->request->get('book_pages'))
         ->setAbout($r->request->get('book_about'))
         ->setAuthor($author);
 

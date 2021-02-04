@@ -3,6 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+
+
+        <link href="http://localhost:8888/dashboard/agurkai/biblioteka/public/build/app.css" rel="stylesheet"/>
+
+        <link href="{{ asset('css/blog.css') }}" rel="stylesheet"/>
+
+
+        <script src="http://localhost:8888/dashboard/agurkai/biblioteka/public/build/app.js" defer></script>
+
+<!-- include libraries(jQuery, bootstrap) -->
+
+
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
         {% block stylesheets %}{% endblock %}
 
         {% block javascripts %}{% endblock %}
